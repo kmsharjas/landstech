@@ -1,0 +1,53 @@
+<!-- --------------inner banner start-------------- -->
+<section class="inner_banner_bg"
+  style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-banner9.jpg);">
+  <div class="container inner_bnr_bg">
+    <div class="row align-items-end">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <h1 class="text-white font-weight-bold">Product By Brand</h1>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent justify-content-end bread_crumb_custom mb-0">
+            <li class="breadcrumb-item"><a routerLink="" class="blue_clr">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Brands</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------inner banner end-------------- -->
+<!--------------------------- product  start --------------------------->
+<section class="product_brand_sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
+        *ngFor="let brand of dataserv.brand| paginate: { itemsPerPage: 12, currentPage: page }; let ndx=index">
+        <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
+        *ngFor="let brand of dataserv.brand; let ndx=index"> -->
+        <a (click)='showBrandProductList(brand.id)'>
+          <div class="product_brand_card card hvr-float">
+            <div class="card-body text-center">
+              <div class="product_brand_bg">
+                <img src="{{brand.brand_image}}" class="img-fluid product_brand_img">
+              </div>
+              <h4 class="font-weight-bold">{{brand.brand_name}}</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12 pagination_cal my-3 my-md-3">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center justify-content-md-end">
+            <!-- <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="dataserv.brand.length">
+            </ngb-pagination> -->
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!--------------------------- product  end --------------------------->

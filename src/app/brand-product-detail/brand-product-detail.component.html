@@ -1,0 +1,114 @@
+<!-- --------------inner banner start-------------- -->
+<section class="inner_banner_bg"
+  style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-banner12.jpg);">
+  <div class="container inner_bnr_bg">
+    <div class="row align-items-end">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <h1 class="text-white font-weight-bold">{{productName}}</h1>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent justify-content-end bread_crumb_custom mb-0">
+            <li class="breadcrumb-item"><a routerLink="" class="blue_clr">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="../brandProductList" class="blue_clr">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Product Detail</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------inner banner end-------------- -->
+<!--------------------------- product  start --------------------------->
+<section class="product_brand_sec">
+  <div class="Quote_bg">
+    <div class="Quote_btn d-flex" data-toggle="modal" data-target="#quote-modal"><i class="fa fa-file-text fa-2x"
+        aria-hidden="true"></i>
+      <p class="mb-0 pl-2 font-weight-bold text-white">Request Quote</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row detail-row mt-2">
+      <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 col-12 my-3 my-md-3">
+        <h3 class="font-weight-bold">{{productName}}</h3>
+        <p class="mb-0">Category: {{category}}</p>
+        <p>Brand: {{brand}}</p>
+      </div>
+      <div class="col-xl-4 col-lg-4 col-md-6  col-sm-12 col-12 my-3 my-md-3">
+        <div class="lSSlideOuter ">
+          <div class="detail-pro">
+            <div class="gallery-wrapper">
+              <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-xl-4 col-lg-4 col-md-6  col-sm-12 col-12 my-3 my-md-3">
+        <div class="detail-pro">
+          <ul id="imageGallery">
+            <li data-thumb="img/Allweiler1.jpg" data-src="img/Allweiler1.jpg">
+              <img src="../../assets/img/Allweiler1.jpg" class="" width="100%" />
+            </li>
+            <li data-thumb="img/Allweiler1.jpg" data-src="img/Allweiler1.jpg">
+              <img src="../../assets/img/Allweiler1.jpg" class="" width="100%" />
+            </li>
+          </ul>
+        </div>
+      </div> -->
+
+      <div class="col-xl-8 col-lg-8 col-md-6  col-sm-12 col-12 my-3 my-md-3">
+        <h3 class="font-weight-bold">Description</h3>
+        <p class="mb-0">{{description}}</p>
+       
+      </div>
+    </div>
+  </div>
+</section>
+<!--------------------------- product  end --------------------------->
+
+<!-- quote modal -->
+<div class="modal fade" id="quote-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Request Quote</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
+              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name"
+                aria-describedby="nameHelp">
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
+              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email"
+                aria-describedby="emailHelp">
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
+              <input type="Phone Number" class="form-control rounded-0 contact_fm_control" placeholder="Number"
+                aria-describedby="nameHelp">
+            </div>
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
+              <input type="Company Address" class="form-control rounded-0 contact_fm_control"
+                placeholder="Company Address" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12">
+              <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" placeholder="Your Message"
+                rows="4"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn modal_btn_submit">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- quote modal -->

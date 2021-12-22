@@ -1,0 +1,193 @@
+<!-- --------------inner banner start-------------- -->
+<section class="inner_banner_bg"
+  style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-banner11.jpg);">
+  <div class="container inner_bnr_bg">
+    <div class="row align-items-end">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <h1 class="text-white font-weight-bold">Allweiler Products</h1>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent justify-content-end bread_crumb_custom mb-0">
+            <li class="breadcrumb-item"><a routerLink="" class="blue_clr">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Products</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------inner banner end-------------- -->
+<!--------------------------- product  start --------------------------->
+<section class="product_brand_sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12 my-3 my-md-3">
+        <p class="mb-0">ALLWEILER GmbH is the oldest German pump manufacturer, founded in 1860, Allweiler GmbH is today
+          the European market and technology leader in fluid handling solutions for shipbuilding, power generation and
+          special industrial applications.</p>
+        <p>Their product portfolio is unrivaled in the industry and includes centrifugal, propeller, screw spindle and
+          progressive cavity pumps, as well as complete pump systems. They also manufacture peristaltic pumps and
+          macerators.</p>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-6 col-12 product_brand_filter my-3 my-md-4">
+        <p class="mb-0 blue_clr font-weight-bold">Showing 1–10 of {{dataserv.brandListLength}} results</p>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6 col-12 product_brand_filter my-3 my-md-4">
+        <form>
+          <div class="form-group">
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Default sorting</option>
+              <option>Sort by popularity</option>
+              <option>Sort by average rating</option>
+              <option>Sort by newness</option>
+              <option>Sort by price: low to high</option>
+              <option>Sort by price: high to low</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
+        *ngFor="let brand of dataserv.productListById; let ndx=index">
+        <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
+        *ngFor="let brand of dataserv.productListById| paginate: { itemsPerPage: 12, currentPage: page }; let ndx=index"> -->
+        <!-- <a routerLink="../brandProductDetail"> -->
+        <a (click)="getProductDetail(brand)">
+          <div class="card list_bd_prd hvr-float">
+            <img class="card-img-top" src="{{brand.title_img}}" alt="Card image cap">
+            <div class="card-body list_bd_body">
+              <h5 class="card-title">{{brand.product_name}}</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a routerLink="../brandProductDetail">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler  -SLP 400.1</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler  -SLP 99.1</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler – SLP 720.1</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler ACNBP 100.1</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler ACNBP 100.2</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler ACNBP 200.1</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler ACNBP 200.2</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler ACNBP 25.1</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler ACNBP 25.2</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3">
+          <a href="">
+            <div class="card list_bd_prd hvr-float">
+              <img class="card-img-top" src="../../assets/img/Allweiler1.jpg" alt="Card image cap">
+              <div class="card-body list_bd_body">
+                <h5 class="card-title">Allweiler ACNBP 380.1</h5>
+              </div>
+            </div>
+          </a>
+        </div> -->
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12 pagination_cal my-3 my-md-3">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center justify-content-md-end">
+            <!-- <li class="page-item">
+              <a class="page-link border-0" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li class="page-item active"><a class="page-link border-0" href="#">1</a></li>
+            <li class="page-item"><a class="page-link border-0" href="#">2</a></li>
+            <li class="page-item"><a class="page-link border-0" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link border-0" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li> -->
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!--------------------------- product  end --------------------------->
