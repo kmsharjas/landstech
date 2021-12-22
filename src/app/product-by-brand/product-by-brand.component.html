@@ -27,7 +27,7 @@
         *ngFor="let brand of dataserv.brand| paginate: { itemsPerPage: 12, currentPage: page }; let ndx=index">
         <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
         *ngFor="let brand of dataserv.brand; let ndx=index"> -->
-        <a (click)='showBrandProductList(brand.id)'>
+        <a (click)='dataserv.getProductByBrandId(brand)'>
           <div class="product_brand_card card hvr-float">
             <div class="card-body text-center">
               <div class="product_brand_bg">

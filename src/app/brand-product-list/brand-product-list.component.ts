@@ -11,6 +11,7 @@ export class BrandProductListComponent implements OnInit {
   constructor(public dataserv: DataService) { }
 
   ngOnInit(): void {
+console.log(this.dataserv.brand);
 
   }
   getProductDetail(val) {

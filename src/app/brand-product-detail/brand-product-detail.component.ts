@@ -23,14 +23,12 @@ export class BrandProductDetailComponent implements OnInit {
   constructor(public dataserv: DataService) { }
 
   ngOnInit() {
-    console.log(this.dataserv.brandDetailbyID);
     this.productDetails = this.dataserv.brandDetailbyID;
     this.productName = this.productDetails.product_name;
-    this.category = this.productDetails.category;
-    this.brand = this.productDetails.brand;
+    this.category = this.productDetails.category_name;
+    this.brand = this.productDetails.brand_name;
     this.description = this.productDetails.desc;
     this.image = this.productDetails.images;
-    console.log(this.productName,this.category,this.brand,this.description,this.image);
 
 
     this.galleryOptions = [
@@ -79,19 +77,7 @@ export class BrandProductDetailComponent implements OnInit {
     ];
 
 
-    this.galleryImages =this.image
-      // [
-      //   {
-      //     small: '../../assets/img/Allweiler1.jpg',
-      //     medium: '../../assets/img/Allweiler1.jpg',
-      //     big: '../../assets/img/Allweiler1.jpg'
-      //   },
-      //   {
-      //     small: '../../assets/img/Allweiler1.jpg',
-      //     medium: '../../assets/img/Allweiler1.jpg',
-      //     big: '../../assets/img/Allweiler1.jpg'
-      //   },
-      // ];
+    this.galleryImages = this.image
   }
 
 }

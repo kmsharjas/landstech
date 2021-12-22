@@ -10,17 +10,19 @@ import { DataService } from '../data.service';
 })
 export class ProductByBrandComponent implements OnInit {
   envApiRoot: string = environment.BaseAPIUrl
-  // page=1
-  // pageSize=12
   page: number = 1;
+  // brandName
+  // brandDesc
   constructor(public dataserv: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.dataserv.getBrand()
   }
 
-  showBrandProductList(id) {
-    this.dataserv.getProductByBrandId(id)
+  showBrandProductList(val) {
+    console.log(val);
+    
+    // this.dataserv.getProductByBrandId(val.id)
   }
 
 }

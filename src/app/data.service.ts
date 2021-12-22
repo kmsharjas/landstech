@@ -20,6 +20,8 @@ export class DataService {
   catTitle
   brandListLength
   public imageArray: any = []
+  brandName: any;
+  brandDesc: any;
 
   constructor(private http: HttpClient, private router: Router) { }
   //get Brand List
@@ -36,7 +38,7 @@ export class DataService {
     this.http.get(this.envApiRoot + '/listcategory/').subscribe(res => {
       console.log(res);
       this.category = res
-      let val=this.category[0]
+      let val = this.category[0]
       console.log(val);
       this.categoryDetails(val)
 
@@ -47,7 +49,7 @@ export class DataService {
     console.log(val);
     this.desc = val.cat_desc
     this.catTitle = val.cat_name
-    
+
     this.getProductListByCategoryId(val.id)
   }
 
@@ -63,16 +65,20 @@ export class DataService {
 
   }
 
-  getProductByBrandId(id) {
-    console.log(id);
-    this.http.get(this.envApiRoot + '/listproductbybrand/' + id + '/').subscribe(res => {
+  getProductByBrandId(val) {
+    console.log(val);
+    this.brandName=val.brand_name
+    console.log(this.brandName);
+    
+    this.brandDesc=val.desc
+    this.http.get(this.envApiRoot + '/listproductbybrand/' + val.id + '/').subscribe(res => {
       console.log(res);
       this.productListById = res
-      this.brandListLength=this.productListById.length
-      console.log(this.brandListLength);
-      
+      this.brandListLength = this.productListById.length
+      console.log(this.productListById);
+
     })
-    this.router.navigate(['brandProductList'])
+      this.router.navigate(['brandProductList'])
   }
 
   getProductDetailById(id) {
@@ -84,6 +90,8 @@ export class DataService {
       if (this.brandDetailbyID != null) {
         this.router.navigate(['brandProductDetail'])
       }
+      else
+        alert('No Products')
 
     })
   }
