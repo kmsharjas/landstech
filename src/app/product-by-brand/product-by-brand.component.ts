@@ -17,7 +17,10 @@ export class ProductByBrandComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataserv.getBrand()
+    
   }
+
+ 
 
   showBrandProductList(val) {
     console.log(val);

@@ -65,7 +65,7 @@
 
         <div class="row align-items-center justify-content-center"
           *ngFor="let cat of dataserv.categoryById| paginate: { itemsPerPage: 2, currentPage: page }; let ndx=index">
-        <!-- <div class="row align-items-center justify-content-center"
+          <!-- <div class="row align-items-center justify-content-center"
           *ngFor="let cat of dataserv.categoryById; let ndx=index"> -->
 
           <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-3 my-md-3">
@@ -90,7 +90,8 @@
             <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center justify-content-md-end">
 
-                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                <pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel="" nextLabel="">
+                </pagination-controls>
 
               </ul>
             </nav>

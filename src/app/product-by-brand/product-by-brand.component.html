@@ -23,7 +23,7 @@
 <section class="product_brand_sec">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
         *ngFor="let brand of dataserv.brand| paginate: { itemsPerPage: 12, currentPage: page }; let ndx=index">
         <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
         *ngFor="let brand of dataserv.brand; let ndx=index"> -->
@@ -33,7 +33,7 @@
               <div class="product_brand_bg">
                 <img src="{{brand.brand_image}}" class="img-fluid product_brand_img">
               </div>
-              <h4 class="font-weight-bold">{{brand.brand_name}}</h4>
+              <h4 class="font-weight-bold brand_hd">{{brand.brand_name}}</h4>
             </div>
           </div>
         </a>
@@ -43,7 +43,8 @@
           <ul class="pagination justify-content-center justify-content-md-end">
             <!-- <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="dataserv.brand.length">
             </ngb-pagination> -->
-            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            <pagination-controls class="my-pagination"  (pageChange)="page = $event" previousLabel="" nextLabel="">
+            </pagination-controls>
           </ul>
         </nav>
       </div>

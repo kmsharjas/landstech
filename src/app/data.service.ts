@@ -27,7 +27,7 @@ export class DataService {
   //get Brand List
   getBrand() {
     this.http.get(this.envApiRoot + '/listbrand/').subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.brand = res
 
     })
@@ -36,17 +36,17 @@ export class DataService {
   //get Category List
   getCategory() {
     this.http.get(this.envApiRoot + '/listcategory/').subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.category = res
       let val = this.category[0]
-      console.log(val);
+      // console.log(val);
       this.categoryDetails(val)
 
     })
   }
 
   categoryDetails(val) {
-    console.log(val);
+    // console.log(val);
     this.desc = val.cat_desc
     this.catTitle = val.cat_name
 
@@ -56,37 +56,35 @@ export class DataService {
 
   //get Product List by ID
   getProductListByCategoryId(id) {
-    console.log(id);
+    // console.log(id);
 
     this.http.get(this.envApiRoot + '/listproductbycategory/' + id + '/').subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.categoryById = res
     })
 
   }
 
   getProductByBrandId(val) {
-    console.log(val);
-    this.brandName=val.brand_name
-    console.log(this.brandName);
-    
-    this.brandDesc=val.desc
+    // console.log(val);
+    this.brandName = val.brand_name
+    this.brandDesc = val.desc
     this.http.get(this.envApiRoot + '/listproductbybrand/' + val.id + '/').subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.productListById = res
       this.brandListLength = this.productListById.length
-      console.log(this.productListById);
+      // console.log(this.productListById);
 
     })
-      this.router.navigate(['brandProductList'])
+    this.router.navigate(['brandProductList'])
   }
 
   getProductDetailById(id) {
-    console.log(id);
+    // console.log(id);
     this.http.get(this.envApiRoot + '/listproductdetail/' + id + '/').subscribe(res => {
       this.brandDetailbyID = res[0]
       this.imageArray = this.brandDetailbyID
-      console.log(this.imageArray);
+      // console.log(this.imageArray);
       if (this.brandDetailbyID != null) {
         this.router.navigate(['brandProductDetail'])
       }
