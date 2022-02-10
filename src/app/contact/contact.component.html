@@ -16,7 +16,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- --------------inner banner end-------------- -->
   <!-- form and map start -->
   <section class="form_bg">
@@ -27,22 +27,22 @@
             data-aos-anchor-placement="top-bottom" data-aos-delay="300">
             <h3 class="font-weight-bold">Get In Touch</h3>
             <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-            <form>
+            <form [formGroup]="contactForm" (ngSubmit)="Submit(contactForm)">
               <div class="row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
-                  <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Your Name"  aria-describedby="nameHelp">
+                  <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Your Name" formControlName="name"  aria-describedby="nameHelp">
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
-                  <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Your Email"  aria-describedby="emailHelp">
+                  <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Your Email" formControlName="email" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
-                  <input type="Phone Number" class="form-control rounded-0 contact_fm_control" placeholder="Phone Number"  aria-describedby="nameHelp">
+                  <input type="Phone Number" class="form-control rounded-0 contact_fm_control" placeholder="Phone Number" formControlName="number"  aria-describedby="nameHelp">
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
-                  <input type="Subject" class="form-control rounded-0 contact_fm_control" placeholder="Subject"  aria-describedby="emailHelp">
+                  <input type="Subject" class="form-control rounded-0 contact_fm_control" placeholder="Subject" formControlName="subject"  aria-describedby="emailHelp">
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12">
-                  <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" placeholder="Your Message" rows="4"></textarea>
+                  <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" placeholder="Your Message" formControlName="message" rows="4"></textarea>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 form_btn_col">
                   <button type="submit" class="btn btn_submit">Submit</button>
@@ -146,7 +146,7 @@
             </div>
           </div>
         </div>
-        
+
 
 
 

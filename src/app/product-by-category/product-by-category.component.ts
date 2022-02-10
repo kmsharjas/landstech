@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { DataService } from '../data.service';
 
@@ -10,13 +11,27 @@ import { DataService } from '../data.service';
 })
 export class ProductByCategoryComponent implements OnInit {
   envApiRoot: string = environment.BaseAPIUrl
-  constructor(public dataserv: DataService, private http: HttpClient) { }
+  mailForm:FormGroup
+  constructor(public dataserv: DataService, private http: HttpClient,private fb:FormBuilder) {
+    this.mailForm=this.fb.group({
+      name: [null],
+      email: [null],
+      number: [null],
+      companyAddress: [null],
+      message: [null],
+    })
+   }
   // desc
   // catTitle
   page: number = 1;
   ngOnInit(): void {
     this.dataserv.getCategory()
     this.dataserv.getProductListByCategoryId(15)
+  }
+
+  Submit(val){
+    console.log(val);
+
   }
 
   // categoryDetails(val) {
@@ -30,6 +45,10 @@ export class ProductByCategoryComponent implements OnInit {
   //   }
   //   this.dataserv.getProductListByCategoryId(val.id)
   // }
+
+    //----------sorting---Searching----------------
+    userFilter: any = {};  //search table filter
+    //----------sorting-Searching------------------
 
   categoryExpand() {
     var x = document.getElementById("category-mobile");

@@ -16,7 +16,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- --------------inner banner end-------------- -->
   <!--------------------------- service start --------------------------->
   <section class="section_pad">
@@ -26,111 +26,21 @@
     <div class="container">
       <div class="row my-3 my-md-2">
         <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2 service_col" data-aos="fade-up"
-          data-aos-anchor-placement="top-bottom">
-          <div class="card service_card">
+          data-aos-anchor-placement="top-bottom" *ngFor="let serv of dataserv.services">
+          <div class="card service_card" (click)="gotoDetail(serv)">
             <div class="service_img_bg position-relative">
-              <img class="card-img-top" src="../../assets/img/service.jpg" alt="Service image">
+              <img class="card-img-top" src={{serv.titleimage}} alt="Service image">
               <div class="over_icon">
-                <img src="../../assets/img/service-icon.png" class="img-fluid" alt="icon">
+                <img src={{serv.subicon}} class="img-fluid" alt="icon">
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title font-weight-bold">Parts production</h5>
-              <p class="card-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-              <a href=""> Read more</a>
+              <h5 class="card-title font-weight-bold">{{serv.title}}</h5>
+              <p class="card-text">{{serv.desc}}</p>
+              <!-- <a href=""> Read more</a> -->
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2 service_col" data-aos="fade-up"
-          data-aos-anchor-placement="top-bottom">
-          <div class="card service_card">
-            <div class="service_img_bg position-relative">
-              <img class="card-img-top" src="../../assets/img/service2.jpg" alt="Service image">
-              <div class="over_icon">
-                <img src="../../assets/img/service-icon2.png" class="img-fluid" alt="icon">
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold">Precision & quality</h5>
-              <p class="card-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-              <a href=""> Read more</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2 service_col" data-aos="fade-up"
-          data-aos-anchor-placement="top-bottom">
-          <div class="card service_card">
-            <div class="service_img_bg position-relative">
-              <img class="card-img-top" src="../../assets/img/service3.jpg" alt="Service image">
-              <div class="over_icon">
-                <img src="../../assets/img/service-icon3.png" class="img-fluid" alt="icon">
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold">Auto & aero manufacture</h5>
-              <p class="card-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-              <a href=""> Read more</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2 service_col" data-aos="fade-up"
-          data-aos-anchor-placement="top-bottom">
-          <div class="card service_card">
-            <div class="service_img_bg position-relative">
-              <img class="card-img-top" src="../../assets/img/service2.jpg" alt="Service image">
-              <div class="over_icon">
-                <img src="../../assets/img/service-icon2.png" class="img-fluid" alt="icon">
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold">Precision & quality</h5>
-              <p class="card-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-              <a href=""> Read more</a>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2 service_col" data-aos="fade-up"
-          data-aos-anchor-placement="top-bottom">
-          <div class="card service_card">
-            <div class="service_img_bg position-relative">
-              <img class="card-img-top" src="../../assets/img/service3.jpg" alt="Service image">
-              <div class="over_icon">
-                <img src="../../assets/img/service-icon3.png" class="img-fluid" alt="icon">
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold">Auto & aero manufacture</h5>
-              <p class="card-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-              <a href=""> Read more</a>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2 service_col" data-aos="fade-up"
-          data-aos-anchor-placement="top-bottom">
-          <div class="card service_card">
-            <div class="service_img_bg position-relative">
-              <img class="card-img-top" src="../../assets/img/service.jpg" alt="Service image">
-              <div class="over_icon">
-                <img src="../../assets/img/service-icon.png" class="img-fluid" alt="icon">
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold">Parts production</h5>
-              <p class="card-text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-              <a href=""> Read more</a>
-            </div>
-          </div>
-        </div>
-
-
-
 
 
       </div>

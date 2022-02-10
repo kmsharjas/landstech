@@ -18,7 +18,7 @@ import { BrandProductDetailComponent } from './brand-product-detail/brand-produc
 import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { OurNewsAndBlogsComponent } from './our-news-and-blogs/our-news-and-blogs.component';
 import { TdiListComponent } from './tdi-list/tdi-list.component';
-import { TdiDetailComponent } from './tdi-detail/tdi-detail.component';
+import { SafePipe, TdiDetailComponent } from './tdi-detail/tdi-detail.component';
 import { CareerDetailComponent } from './career-detail/career-detail.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { RouterModule } from '@angular/router';
@@ -28,10 +28,13 @@ import { QuoteModalComponent } from './quote-modal/quote-modal.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { BrandSectionComponent } from './brand-section/brand-section.component';
 // import { LightgalleryModule } from 'lightgallery/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CareerBycategoryComponent } from './career-bycategory/career-bycategory.component';
+import { SearchService } from './shared/search.service';
+import { ServiceDetailComponent } from './service-detail/service-detail.component';
 // import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
@@ -57,7 +60,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BlogDetailComponent,
     QuoteModalComponent,
     BrandSectionComponent,
-    
+    SafePipe,
+    CareerBycategoryComponent,  //For manipulate bypass security
+    SearchService, ServiceDetailComponent, //search pipe
+
   ],
   imports: [
     BrowserModule,
@@ -68,8 +74,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CarouselModule,
     NgImageSliderModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule ,
-    NgxGalleryModule,//For galleery 
+    NgxGalleryModule,//For galleery
     NgxPaginationModule,
 
   ],

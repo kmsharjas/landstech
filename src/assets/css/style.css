@@ -120,11 +120,11 @@ position: relative;
 background-color: #febc34;
 }
 
-.drop_custom .dropdown-item.active, 
+.drop_custom .dropdown-item.active,
 .drop_custom .dropdown-item:active {
     background-color: #febc34;
 }
-.drop_custom .dropdown-item:focus, 
+.drop_custom .dropdown-item:focus,
 .drop_custom .dropdown-item:hover{
   background-color: #febc34;
   color: #fff;
@@ -542,7 +542,7 @@ border: none;
 
 
 /*=======================About page start=======================*/
-.inner_banner_bg{    
+.inner_banner_bg{
     /*background-image: rgba(255, 0, 0, 0.25),url(../img/inner-banner2.jpg);*/
     background-size: cover!important;
     background-position: center!important;
@@ -594,7 +594,7 @@ border: none;
   color:#febc34;
 }
 .ads_card .card-body .fa{
-   color:#febc34; 
+   color:#febc34;
 }
 .media-body .addres_line_ht{
     min-height: 65px;
@@ -631,7 +631,7 @@ border: none;
 .btn.btn-apply{
      background-color: #222222;
      border-radius: 0;
-     color: #fff;
+     color: #fff !important;
     text-transform: uppercase;
 }
 .btn.btn-apply:hover{
@@ -703,7 +703,7 @@ border: none;
 
 .category_group{
    height:700px;
-   overflow-y:auto; 
+   overflow-y:auto;
 }
 
 
@@ -867,11 +867,11 @@ color:#e0e0e0;
      height: calc(2.25rem + 2px);
 }
 .contact_frm_col .custom-file-label{
-   height: calc(calc(2.25rem + 22px) - 1px * 2);      
+   height: calc(calc(2.25rem + 22px) - 1px * 2);
 }
 .contact_frm_col .custom-file-label::after{
- height: calc(calc(2.25rem + 22px) - 1px * 2); 
-     line-height: 3;   
+ height: calc(calc(2.25rem + 22px) - 1px * 2);
+     line-height: 3;
 }
 /*brand products  end*/
 

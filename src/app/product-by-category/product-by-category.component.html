@@ -36,7 +36,8 @@
               <div class="form-row align-items-center search_blog_bg">
                 <div class="col-sm-12 my-1">
                   <div class="input-group">
-                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername">
+                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername"
+                      [(ngModel)]="userFilter.cat_name"  [ngModelOptions]="{standalone: true}">
                     <div class="input-group-prepend">
                       <div class="input-group-text btn search_btn_fm">Search</div>
                     </div>
@@ -49,7 +50,7 @@
                 (click)="categoryExpand()">
                 All Categories</h4>
               <div class="list-group category_group" id="category-mobile">
-                <a *ngFor="let cat of dataserv.category; let ndx=index"
+                <a *ngFor="let cat of dataserv.category|filterBy: userFilter; let ndx=index"
                   class="list-group-item list-group-item-action border-left-0 border-right-0"
                   (click)="dataserv.categoryDetails(cat)"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>
                   {{cat.cat_name}} </a>
@@ -115,33 +116,34 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="mailForm" (ngSubmit)="Submit(mailForm)">
           <div class="row">
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
-              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name"
+              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name" formControlName="name"
                 aria-describedby="nameHelp">
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
-              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email"
+              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email" formControlName="email"
                 aria-describedby="emailHelp">
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
-              <input type="Phone Number" class="form-control rounded-0 contact_fm_control" placeholder="Number"
+              <input type="Phone Number" class="form-control rounded-0 contact_fm_control" placeholder="Number" formControlName="number"
                 aria-describedby="nameHelp">
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
-              <input type="Company Address" class="form-control rounded-0 contact_fm_control"
+              <input type="Company Address" class="form-control rounded-0 contact_fm_control"   formControlName="companyAddress"
                 placeholder="Company Address" aria-describedby="emailHelp">
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12">
-              <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" placeholder="Your Message"
+              <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" placeholder="Your Message" formControlName="message"
                 rows="4"></textarea>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn modal_btn_submit">Submit</button>
+        <button type="submit" class="btn modal_btn_submit" >Submit</button>
+        <!-- <button type="submit" class="btn modal_btn_submit" (click)="dataserv.mailSend()">Submit</button> -->
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
   <div class="container inner_bnr_bg">
     <div class="row align-items-end">
       <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
-        <h1 class="text-white font-weight-bold">Associate Admin. Customer Services</h1>
+        <h1 class="text-white font-weight-bold">{{dataserv.career.jobname}}</h1>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
         <nav aria-label="breadcrumb">
@@ -21,8 +21,8 @@
 
 <!-- --------------inner banner end-------------- -->
 <!-- ----------------------career detail start---------------------- -->
-<section class="creer_detail_bg">
-  <div class="container">
+<section class="creer_detail_bg ">
+  <div class="container ">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-12 col-12 creer_col_left my-3 my-md-3">
         <div class="creer_left_card" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="300">
@@ -32,7 +32,7 @@
                 <div class="card-body">
                   <img class="img-fluid mb-3" src="../../assets/img/department.png" alt="Generic placeholder image">
                   <h5 class="mb-0 font-weight-bold">Department</h5>
-                  <p>Information Technology</p>
+                  <p>{{dataserv.career.dept}}</p>
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@
                 <div class="card-body">
                   <img class="img-fluid mb-3" src="../../assets/img/route.png" alt="Generic placeholder image">
                   <h5 class="mb-0 font-weight-bold">Location</h5>
-                  <p>Gurugram, India</p>
+                  <p>{{dataserv.career.jobloc}}</p>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@
                 <div class="card-body">
                   <img class="img-fluid mb-3" src="../../assets/img/graduation-cap.png" alt="Generic placeholder image">
                   <h5 class="mb-0 font-weight-bold">Education</h5>
-                  <p>MBA or Master’s Degree</p>
+                  <p>{{dataserv.career.edu}}</p>
                 </div>
               </div>
             </div>
@@ -59,30 +59,20 @@
                 <div class="card-body">
                   <img class="img-fluid mb-3" src="../../assets/img/goal.png" alt="Generic placeholder image">
                   <h5 class="mb-0 font-weight-bold">Experience</h5>
-                  <p>0 - 4 years</p>
+                  <p>{{dataserv.career.jobexperience}}</p>
                 </div>
               </div>
             </div>
           </div>
-          <p class="text-secondary font-weight-bold mb-0"><i class="fa fa-calendar" aria-hidden="true"></i> Sep 29,2021
+          <p class="text-secondary font-weight-bold mb-0"><i class="fa fa-calendar" aria-hidden="true"></i> {{dataserv.career.createdby|date:'mediumDate'}}
           </p>
           <h2 class="mt-3 font-weight-bold">Job Description</h2>
-          <p>Distinctively fashion standardized communities vis-a-vis seamless applications. Authoritatively
-            recaptiualize efficient supply chains without vertical initiatives. Progressively visualize strategic
-            relationships with error-free processes. Credibly strategize fully tested outsourcing with functional
-            e-markets. Dynamically evisculate user friendly architectures before cross-media experiences. Interactively
-            disintermediate empowered data whereas distinctive human capital. Compellingly utilize.</p>
-          <p>Dynamically utilize intermandated materials through customized process improvements. Conveniently
-            recaptiualize adaptive leadership before long-term high-impact functionalities. Completely incubate customer
-            directed meta-services after economically sound imperatives. Distinctively evolve diverse applications for
-            enterprise processes. Monotonectally disintermediate functionalized solutions rather than progressive
-            leadership.</p>
+          <p>{{dataserv.career.jobdescription}}.</p>
           <h2 class="mt-3 font-weight-bold">Job Responsibilities</h2>
-          <ul class="career_ul pl-4">
-            <li>Assign and communicate work direction from supervisor..</li>
-            <li>System reporting for job completion and work times</li>
-            <li>Regular attendance and punctuality.</li>
-            <li>Give input to and improve packaging procedures.</li>
+          <ul class="career_ul pl-4" >
+
+            <li *ngFor="let resp of dataserv.career.careers">
+              {{resp.jobresponsibility}}..</li>
           </ul>
           <button type="button" class="btn aply_btn" data-toggle="modal" data-target="#apply-modal">Apply Now <i
               class="fa fa-angle-double-right fa-2x ml-2" aria-hidden="true"></i></button>
@@ -96,7 +86,7 @@
               <div class="form-row align-items-center search_creer_bg">
                 <div class="col-sm-12 my-1">
                   <div class="input-group">
-                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername">
+                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername" [(ngModel)]="userFilter.jobname"  [ngModelOptions]="{standalone: true}">
                     <div class="input-group-prepend">
                       <div class="input-group-text btn search_btn_fm">Search</div>
                     </div>
@@ -106,29 +96,15 @@
             </form>
             <h4 class="font-weight-bold mb-0 mt-3">Recent Posts</h4>
             <div class="">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>TDI Air
+              <ul class="list-group list-group-flush" *ngFor="let crr of dataserv.reccareer|filterBy: userFilter;">
+                <li class="list-group-item px-0" (click)="getCategoryById(crr)"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>{{crr.jobname}}
                   Starters</li>
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>Marinetec
-                  China 2017</li>
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>ADIPEC 2017
-                </li>
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>Vessel
-                  Operating Costs on the Rise -Moore Stephens</li>
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>Shipping
-                  Companies May Adopt LNG Faster Than Expected</li>
               </ul>
             </div>
             <h4 class="font-weight-bold mb-0 mt-3">All Categories</h4>
             <div class="">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>Industry</li>
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>Factory</li>
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>Business</li>
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>Management
-                </li>
-                <li class="list-group-item px-0"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>Finance &
-                  Accounting</li>
+              <ul class="list-group list-group-flush" *ngFor="let car of dataserv.dept">
+                <li class="list-group-item px-0"  (click)="getCareerByCategory(car)"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>{{car.department}}</li>
               </ul>
             </div>
           </div>
@@ -152,23 +128,25 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="careerForm" >
           <div class="row">
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
-              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name"
+              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name" formControlName="name"
                 aria-describedby="nameHelp">
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
-              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email"
+              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email" formControlName="email"
                 aria-describedby="emailHelp">
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
               <div class="input-group">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input form-control rounded-0 contact_fm_control"
-                    id="inputGroupFile01">
+                  <input type="file" class="custom-file-input form-control rounded-0 contact_fm_control" formControlName="file"
+                    id="inputGroupFile01" (change)="uploadFile($event)" #fileInput
+                    (change)="onFileSelect(fileInput)">
+                    <!-- id="inputGroupFile01" (change)="uploadFile($event)"> -->
                   <label class="custom-file-label form-control rounded-0 contact_fm_control"
-                    for="inputGroupFile01">Upload Resume</label>
+                    for="inputGroupFile01" >Upload Resume</label>
                 </div>
               </div>
             </div>
@@ -177,7 +155,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn modal_btn_submit">Submit</button>
+        <button type="submit" class="btn modal_btn_submit" (click)="Submit(careerForm)">Submit</button>
       </div>
     </div>
   </div>

@@ -4,9 +4,11 @@
 
 export const environment = {
   production: false,
-  BaseAPIUrl:"http://192.168.1.118:8000"
-  // BaseAPIUrl:"http://192.168.1.200:8002"
-  // BaseAPIUrl:"127.0.0.1:8000/"
+  // BaseAPIUrl:"http://192.168.29.251:8001"
+  // BaseAPIUrl:"http://192.168.1.118:8001"
+  // BaseAPIUrl: "http://192.168.43.251:8000"
+  BaseAPIUrl: 'http://10.10.100.125:8000',
+  // BaseAPIUrl: 'http://122.165.124.159:6005',  //server address
 };
 
 /*

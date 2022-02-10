@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-tdi-list',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tdi-list.component.css']
 })
 export class TdiListComponent implements OnInit {
-
-  constructor() { }
+productDetail
+  constructor(public dataserv: DataService) { }
 
   ngOnInit(): void {
+    this.dataserv.getTdiProducts()
+     this.productDetail = this.dataserv.tdiProducts
+    console.log(this.productDetail);
+
   }
 
 }

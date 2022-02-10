@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { DataService } from '../data.service';
 declare var $: any;
@@ -20,7 +21,18 @@ export class BrandProductDetailComponent implements OnInit {
   description
   image: any = []
   product: any = []
-  constructor(public dataserv: DataService) { }
+  emailForm:FormGroup
+  constructor(public dataserv: DataService,private fb:FormBuilder) {
+    this.emailForm = this.fb.group({
+      name: [null],
+      email: [null],
+      number: [null],
+      cmpny_address: [null],
+      message:  [null],
+      product:[null],
+
+    })
+   }
 
   ngOnInit() {
     this.productDetails = this.dataserv.brandDetailbyID;
@@ -78,6 +90,10 @@ export class BrandProductDetailComponent implements OnInit {
 
 
     this.galleryImages = this.image
+  }
+
+  Submit(val) {
+    console.log(val.value);
   }
 
 }

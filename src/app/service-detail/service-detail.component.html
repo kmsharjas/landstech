@@ -1,0 +1,68 @@
+<!-- --------------inner banner start-------------- -->
+<section class="inner_banner_bg"
+  style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-banner8.jpg);">
+  <div class="container inner_bnr_bg">
+    <div class="row align-items-end">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <h1 class="text-white font-weight-bold">Service by Category</h1>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent justify-content-end bread_crumb_custom mb-0">
+            <li class="breadcrumb-item"><a routerLink="" class="blue_clr">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Categorys</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------inner banner end-------------- -->
+<!--------------------------- category start --------------------------->
+<section class="section_pad">
+  <div class="container">
+    <div class="row my-3 my-md-2">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <div class="card category_card">
+          <div class="card-body">
+            <form>
+              <div class="form-row align-items-center search_blog_bg">
+                <div class="col-sm-12 my-1">
+                  <div class="input-group">
+                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername"
+                      [(ngModel)]="userFilter.cat_name" [ngModelOptions]="{standalone: true}">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text btn search_btn_fm">Search</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <ng-container>
+              <h4 class="font-weight-bold font-weight-sm-lighter my-3 my-md-3 mobile_btn_category">
+                All Services</h4>
+              <div class="list-group " id="category-mobile">
+                <a *ngFor="let ser of dataserv.services|filterBy: userFilter; let ndx=index"
+                  class="list-group-item list-group-item-action border-left-0 border-right-0"
+                  (click)="dataserv.categoryDetails(ser)"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>
+                  {{ser.title}} </a>
+              </div>
+            </ng-container>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-6 col-12 my-2" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <div class="blog_left_card" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="300">
+          <h2 class="mt-3 font-weight-bold">{{dataserv.services[0].title}}</h2>
+          <div>
+            <img [src]="dataserv.services[0].titleimage" class="img-fluid my-3" alt="blog image" width="100%">
+            <p>{{dataserv.services[0].desc}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--------------------------- category end --------------------------->

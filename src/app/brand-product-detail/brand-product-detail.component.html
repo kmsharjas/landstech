@@ -48,7 +48,7 @@
       <div class="col-xl-8 col-lg-8 col-md-6  col-sm-12 col-12 my-3 my-md-3">
         <h3 class="font-weight-bold">Description</h3>
         <p class="mb-0">{{description}}</p>
-       
+
       </div>
     </div>
   </div>
@@ -67,7 +67,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="emailForm" (ngSubmit)="Submit(emailForm)">
           <div class="row">
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
               <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name"
@@ -93,7 +93,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn modal_btn_submit">Submit</button>
+        <button type="submit" class="btn modal_btn_submit" >Submit</button>
+        <!-- <button type="submit" class="btn modal_btn_submit" (click)="dataserv.mailSend()">Submit</button> -->
       </div>
     </div>
   </div>

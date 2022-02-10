@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-careers',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CareersComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dataserv:DataService) { }
 
   ngOnInit(): void {
+    this.dataserv.getCareers()
+  }
+
+  getCareerDetails(val){
+    console.log(val);
+    this.dataserv.getCareerById(val)
   }
 
 }
