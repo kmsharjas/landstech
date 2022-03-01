@@ -142,8 +142,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn modal_btn_submit" >Submit</button>
-        <!-- <button type="submit" class="btn modal_btn_submit" (click)="dataserv.mailSend()">Submit</button> -->
+        <!-- <button type="submit" class="btn modal_btn_submit" >Submit</button> -->
+        <button type="submit" class="btn modal_btn_submit" (click)="mailSend(mailForm,dataserv.catTitle)">Submit</button>
       </div>
     </div>
   </div>

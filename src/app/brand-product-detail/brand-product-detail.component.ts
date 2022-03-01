@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { environment } from 'src/environments/environment';
 import { DataService } from '../data.service';
 declare var $: any;
 
@@ -14,6 +16,7 @@ export class BrandProductDetailComponent implements OnInit {
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  envApiRoot: string = environment.BaseAPIUrl
   productDetails
   productName
   category
@@ -22,7 +25,7 @@ export class BrandProductDetailComponent implements OnInit {
   image: any = []
   product: any = []
   emailForm:FormGroup
-  constructor(public dataserv: DataService,private fb:FormBuilder) {
+  constructor(public dataserv: DataService, private http: HttpClient,private fb:FormBuilder) {
     this.emailForm = this.fb.group({
       name: [null],
       email: [null],
@@ -96,6 +99,25 @@ export class BrandProductDetailComponent implements OnInit {
     console.log(val.value);
   }
 
+  mailSend(val,name){
+    let data=val.value
+    console.log(val);
+    console.log(data.name);
+    console.log(name);
+    let body = {
+      "name": data.name,
+      "email": data.email,
+      "number": data.number,
+      "cmpny_address": data.cmpny_address,
+      "message": data.message,
+      "product":this.productName
+    };
+    console.log(body);
+
+    this.http.post(this.envApiRoot + '/emailsend/', body).subscribe((res) => {
+      console.log(res);
+    });
+  }
 }
 
 

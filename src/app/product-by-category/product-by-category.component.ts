@@ -26,7 +26,7 @@ export class ProductByCategoryComponent implements OnInit {
   page: number = 1;
   ngOnInit(): void {
     this.dataserv.getCategory()
-    this.dataserv.getProductListByCategoryId(15)
+    // this.dataserv.getProductListByCategoryId(15)
   }
 
   Submit(val){
@@ -57,6 +57,25 @@ export class ProductByCategoryComponent implements OnInit {
     } else {
       x.style.display = "none";
     }
+  }
+  mailSend(val,name){
+    let data=val.value
+    console.log(val);
+    console.log(data.name);
+    console.log(name);
+    let body = {
+      "name": data.name,
+      "email": data.email,
+      "number": data.number,
+      "cmpny_address": data.companyAddress,
+      "message": data.message,
+      "category":name
+    };
+    console.log(body);
+
+    this.http.post(this.envApiRoot + '/categorymailsend/', body).subscribe((res) => {
+      console.log(res);
+    });
   }
 
 }

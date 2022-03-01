@@ -32,17 +32,18 @@ export class DataService {
   blogs;
   blog: any = [];
   recblog: any = [];
+  homeblog: any = [];
   careers: any = [];
   career: any = [];
-  reccareer:any
+  reccareer: any;
   services: any = [];
   dept: any = [];
   blogcat: any = [];
   careercat: any = [];
-  careerCategoryName:any='Landseatech'
+  careerCategoryName: any = 'Landseatech';
+  catName;
 
-
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
   //get Brand List
   getBrand() {
     this.http.get(this.envApiRoot + '/listbrand/').subscribe((res) => {
@@ -67,17 +68,18 @@ export class DataService {
     this.desc = val.cat_desc;
     this.catTitle = val.cat_name;
 
-    this.getProductListByCategoryId(val.id);
+    this.getProductListByCategoryId(val);
   }
 
   //get Product List by ID
-  getProductListByCategoryId(id) {
+  getProductListByCategoryId(val) {
     // console.log(id);
+    this.catName = val.cat_name;
 
     this.http
-      .get(this.envApiRoot + '/listproductbycategory/' + id + '/')
+      .get(this.envApiRoot + '/listproductbycategory/' + val.id + '/')
       .subscribe((res) => {
-        // console.log(res);
+        console.log(res);
         this.categoryById = res;
       });
   }
@@ -152,25 +154,30 @@ export class DataService {
     this.http.get(this.envApiRoot + '/listblog/').subscribe((res) => {
       console.log(res);
       this.blogs = res;
-      this.recblog = this.blogs.slice(Math.max(this.blogs.length - 5, 0));
-      console.log(this.recblog);
+      this.recblog = this.blogs.slice(Math.max(this.blogs.length - 15, 0));
+      this.homeblog = this.blogs.slice(Math.max(this.blogs.length - 3, 0));
+      console.log(this.homeblog);
     });
   }
 
   //get blog by ID
   getBlogById(blg) {
-    this.http.get(this.envApiRoot + '/listblogbyid/' + blg.id + '/').subscribe((res) => {
-      console.log(res);
-      this.blog = res[0];
-      this.router.navigate(['../blogDetail'])
-    });
+    this.http
+      .get(this.envApiRoot + '/listblogbyid/' + blg.id + '/')
+      .subscribe((res) => {
+        console.log(res);
+        this.blog = res[0];
+        this.router.navigate(['../blogDetail']);
+      });
   }
 
   //get blog by ID
   getBlogByCategory(blg) {
-    this.http.get(this.envApiRoot + '/listblogbycategory/' + blg.blogcat_id + '/').subscribe((res) => {
-      console.log(res);
-    });
+    this.http
+      .get(this.envApiRoot + '/listblogbycategory/' + blg.blogcat_id + '/')
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 
   //get careers List
@@ -184,61 +191,67 @@ export class DataService {
 
   //get career by ID
   getCareerById(val) {
-    this.http.get(this.envApiRoot + '/listcareersbyid/' + val.id + '/').subscribe((res) => {
-      console.log(res);
-      this.career=res[0]
-      this.router.navigate(['../careerDetail'])
-    });
+    this.http
+      .get(this.envApiRoot + '/listcareersbyid/' + val.id + '/')
+      .subscribe((res) => {
+        console.log(res);
+        this.career = res[0];
+        this.router.navigate(['../careerDetail']);
+      });
   }
 
-    //get blog by ID
-    getCareerByCategory(car) {
-      this.http.get(this.envApiRoot + '/listcareerbydepartment/' + car.id + '/').subscribe((res) => {
+  //get blog by ID
+  getCareerByCategory(car) {
+    this.http
+      .get(this.envApiRoot + '/listcareerbydepartment/' + car.id + '/')
+      .subscribe((res) => {
         console.log(res);
-        this.careerCategoryName=car.department
-        this.careercat=res
-        this.router.navigate(['../careerByCategory'])
+        this.careerCategoryName = car.department;
+        this.careercat = res;
+        this.router.navigate(['../careerByCategory']);
       });
-    }
+  }
 
   //get services List
   getServices() {
     this.http.get(this.envApiRoot + '/listservices/').subscribe((res) => {
       console.log(res);
-      this.services = res
-      console.log(this.services)
-
+      this.services = res;
+      console.log(this.services);
     });
   }
 
-    //get departments List
-    getDepartments() {
-      this.http.get(this.envApiRoot + '/listdepartment/').subscribe((res) => {
-        console.log(res);
-        this.dept = res
-      });
-    }
+  //get departments List
+  getDepartments() {
+    this.http.get(this.envApiRoot + '/listdepartment/').subscribe((res) => {
+      console.log(res);
+      this.dept = res;
+    });
+  }
 
-      //get Blogcategory List
+  //get Blogcategory List
   getBlogcategory() {
     this.http.get(this.envApiRoot + '/listblogcategory/').subscribe((res) => {
       console.log(res);
-      this.blogcat = res
+      this.blogcat = res;
     });
   }
 
-  mailSend() {
+  mailSend(data, name) {
+    console.log(data);
+    console.log(name);
+
     let body = {
       name: 'Request for quote',
       email: 'Jahana@gmail.com',
       number: '9876543210',
       cmpny_address: 'Jahana&Co',
       message: 'Jahana new',
-      product:'tea powder',
-      mailSubject:'Request for quote'
+      product: 'tea powder',
+      mailSubject: 'Request for quote',
       // mailSubject:'Request for contact'
     };
-    this.http.post(this.envApiRoot + '/emailsend/', body).subscribe((res) => {
+    this.http.post(this.envApiRoot + '/emailsend/', data).subscribe((res) => {
       console.log(res);
     });
   }

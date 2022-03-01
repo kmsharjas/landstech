@@ -70,30 +70,30 @@
         <form [formGroup]="emailForm" (ngSubmit)="Submit(emailForm)">
           <div class="row">
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
-              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name"
+              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name" formControlName="name"
                 aria-describedby="nameHelp">
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
-              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email"
+              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email" formControlName="email"
                 aria-describedby="emailHelp">
             </div>
             <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 contact_frm_col">
-              <input type="Phone Number" class="form-control rounded-0 contact_fm_control" placeholder="Number"
+              <input type="Phone Number" class="form-control rounded-0 contact_fm_control" placeholder="Number" formControlName="name"formControlName="number"
                 aria-describedby="nameHelp">
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
-              <input type="Company Address" class="form-control rounded-0 contact_fm_control"
+              <input type="Company Address" class="form-control rounded-0 contact_fm_control" formControlName="cmpny_address"
                 placeholder="Company Address" aria-describedby="emailHelp">
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12">
-              <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" placeholder="Your Message"
+              <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" placeholder="Your Message"   formControlName="message"
                 rows="4"></textarea>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn modal_btn_submit" >Submit</button>
+        <button type="submit" class="btn modal_btn_submit" (click)="mailSend(emailForm,dataserv.catTitle)">Submit</button>
         <!-- <button type="submit" class="btn modal_btn_submit" (click)="dataserv.mailSend()">Submit</button> -->
       </div>
     </div>

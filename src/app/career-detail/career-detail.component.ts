@@ -13,8 +13,12 @@ export class CareerDetailComponent implements OnInit {
   envApiRoot: string = environment.BaseAPIUrl;
   public careerForm: FormGroup;
   fileInfo: string;
-  file:any
-  constructor(public dataserv: DataService, private fb: FormBuilder, private http: HttpClient) {
+  file: any;
+  constructor(
+    public dataserv: DataService,
+    private fb: FormBuilder,
+    private http: HttpClient
+  ) {
     this.careerForm = this.fb.group({
       name: [null],
       email: [null],
@@ -22,22 +26,22 @@ export class CareerDetailComponent implements OnInit {
     });
   }
 
-   //----------sorting---Searching----------------
-   userFilter: any = {};  //search table filter
-   //----------sorting-Searching------------------
+  //----------sorting---Searching----------------
+  userFilter: any = {}; //search table filter
+  //----------sorting-Searching------------------
 
   ngOnInit(): void {
     this.dataserv.getDepartments();
   }
 
-  getCategoryById(vl){
+  getCategoryById(vl) {
     console.log(vl);
-    this.dataserv.getCareerById(vl)
+    this.dataserv.getCareerById(vl);
   }
 
-  getCareerByCategory(vl){
+  getCareerByCategory(vl) {
     console.log(vl);
-    this.dataserv.getCareerByCategory(vl)
+    this.dataserv.getCareerByCategory(vl);
   }
 
   //upload file
@@ -57,33 +61,34 @@ export class CareerDetailComponent implements OnInit {
     // )
   }
   Submit(val) {
-    alert(val.value)
+    alert(val.value);
     console.log(val);
-    let data=val.value;
-    let fileToUpload=<File>this.file
-    const formData=new FormData();
-    formData.append('file',fileToUpload,this.file.name);
-    formData.append('mail',data.email);
-    formData.append('name',fileToUpload,data.name);
+    let data = val.value;
+    let fileToUpload = <File>this.file;
+    const formData = new FormData();
+    formData.append('file', fileToUpload, this.file.name);
+    formData.append('mail', data.email);
+    formData.append('name', fileToUpload, data.name);
+    formData.append('jobname', this.dataserv.career.jobname);
+    console.log(formData);
 
-    this.http.post(this.envApiRoot + '/filesend/', formData).subscribe((res) => {
-      console.log(res);
-      this.careerForm.reset();
-    });
+    this.http
+      .post(this.envApiRoot + '/filesend/', formData)
+      .subscribe((res) => {
+        console.log(res);
+        this.careerForm.reset();
+      });
     console.log(val.value);
 
-
-    let body={
+    let body = {
       name: data.name,
       email: data.email,
       file: data.file,
-    }
+    };
     console.log(body);
-
   }
 
   onFileSelect(input: HTMLInputElement): void {
-
     /**
      * Format the size to a human readable string
      *
@@ -108,9 +113,5 @@ export class CareerDetailComponent implements OnInit {
 
     this.fileInfo = `${this.file.name} (${formatBytes(this.file.size)})`;
     console.log(this.fileInfo);
-
-
-
   }
-
 }
