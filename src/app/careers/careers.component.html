@@ -21,20 +21,22 @@
 <!-- --------------inner banner end-------------- -->
 <!-- ----------------------career start---------------------- -->
 <section class="mt-5">
-  <div class="container" >
+  <div class="container">
     <h2 class="font-weight-bold blue_clr mt-3">Become a Part of Our Big Family</h2>
     <h5>Objectively whiteboard transparent models for prospective<br> information. Authoritatively myocardinate.</h5>
-    <div class="row career_row justify-content-center my-4" >
+    <div class="row career_row justify-content-center my-4">
 
 
       <div class="col-lg-4 col-md-6 col-sm-6 col-12 career_col my-3 my-md-3" *ngFor="let career of dataserv.careers">
         <div class="card career_card text-center">
           <div class="card-body">
             <h5 class="card-title font-weight-bold">{{career.jobname}}</h5>
-            <p class="mb-4">{{ (career.jobdescription.length>87)? (career.jobdescription | slice:0:87):(career.jobdescription) }}...</p>
+            <p class="mb-4">{{ (career.jobdescription.length>87)? (career.jobdescription |
+              slice:0:87):(career.jobdescription) }}...</p>
             <h6 class="card-subtitle mb-0 blue_clr">{{career.jobtyp}}</h6>
             <p class="mb-0">Location - {{career.jobloc}}</p>
-            <a class="btn btn-apply mt-3"  role="button" (click)="getCareerDetails(career)">View and Apply</a>
+            <a class="btn btn-apply mt-3" role="button" [routerLink]="career.id">View and Apply</a>
+            <!-- <a class="btn btn-apply mt-3" role="button" (click)="getCareerDetails(career)">View and Apply</a> -->
           </div>
         </div>
       </div>

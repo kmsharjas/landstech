@@ -28,7 +28,7 @@
       <div class="col-lg-4 col-md-6 col-sm-12 col-12 blog_col my-2 my-md-3" data-aos="fade-up"
         data-aos-anchor-placement="top-bottom" *ngFor="let blg of dataserv.blogs">
         <!-- <a routerLink="../blogDetail" getBlogDetails> -->
-          <a (click)="getBlogDetails(blg)">
+        <a [routerLink]="blg.id">
           <div class="blog_card card rounded-0 border-0">
             <img class="card-img-top" src="{{blg.img}}" alt="blog image">
             <div class="overlay_date text-center">

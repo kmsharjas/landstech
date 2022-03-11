@@ -1,10 +1,10 @@
 <!-- --------------inner banner start-------------- -->
-<section class="inner_banner_bg"
+<section *ngIf="career$ | async as career" class="inner_banner_bg"
   style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-banner7.jpg);">
   <div class="container inner_bnr_bg">
     <div class="row align-items-end">
       <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
-        <h1 class="text-white font-weight-bold">{{dataserv.career.jobname}}</h1>
+        <h1 class="text-white font-weight-bold">{{ career.jobname}}</h1>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
         <nav aria-label="breadcrumb">
@@ -21,8 +21,8 @@
 
 <!-- --------------inner banner end-------------- -->
 <!-- ----------------------career detail start---------------------- -->
-<section class="creer_detail_bg ">
-  <div class="container ">
+<section *ngIf="career$ | async as career" class="creer_detail_bg ">
+  <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-12 col-12 creer_col_left my-3 my-md-3">
         <div class="creer_left_card" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="300">
@@ -32,7 +32,7 @@
                 <div class="card-body">
                   <img class="img-fluid mb-3" src="../../assets/img/department.png" alt="Generic placeholder image">
                   <h5 class="mb-0 font-weight-bold">Department</h5>
-                  <p>{{dataserv.career.dept}}</p>
+                  <p>{{career.dept}}</p>
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@
                 <div class="card-body">
                   <img class="img-fluid mb-3" src="../../assets/img/route.png" alt="Generic placeholder image">
                   <h5 class="mb-0 font-weight-bold">Location</h5>
-                  <p>{{dataserv.career.jobloc}}</p>
+                  <p>{{career.jobloc}}</p>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@
                 <div class="card-body">
                   <img class="img-fluid mb-3" src="../../assets/img/graduation-cap.png" alt="Generic placeholder image">
                   <h5 class="mb-0 font-weight-bold">Education</h5>
-                  <p>{{dataserv.career.edu}}</p>
+                  <p>{{career.edu}}</p>
                 </div>
               </div>
             </div>
@@ -59,19 +59,20 @@
                 <div class="card-body">
                   <img class="img-fluid mb-3" src="../../assets/img/goal.png" alt="Generic placeholder image">
                   <h5 class="mb-0 font-weight-bold">Experience</h5>
-                  <p>{{dataserv.career.jobexperience}}</p>
+                  <p>{{career.jobexperience}}</p>
                 </div>
               </div>
             </div>
           </div>
-          <p class="text-secondary font-weight-bold mb-0"><i class="fa fa-calendar" aria-hidden="true"></i> {{dataserv.career.createdby|date:'mediumDate'}}
+          <p class="text-secondary font-weight-bold mb-0"><i class="fa fa-calendar" aria-hidden="true"></i>
+            {{career.createdby|date:'mediumDate'}}
           </p>
           <h2 class="mt-3 font-weight-bold">Job Description</h2>
-          <p>{{dataserv.career.jobdescription}}.</p>
+          <p>{{career.jobdescription}}.</p>
           <h2 class="mt-3 font-weight-bold">Job Responsibilities</h2>
-          <ul class="career_ul pl-4" >
+          <ul class="career_ul pl-4">
 
-            <li *ngFor="let resp of dataserv.career.careers">
+            <li *ngFor="let resp of career.careers">
               {{resp.jobresponsibility}}..</li>
           </ul>
           <button type="button" class="btn aply_btn" data-toggle="modal" data-target="#apply-modal">Apply Now <i
@@ -86,7 +87,8 @@
               <div class="form-row align-items-center search_creer_bg">
                 <div class="col-sm-12 my-1">
                   <div class="input-group">
-                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername" [(ngModel)]="userFilter.jobname"  [ngModelOptions]="{standalone: true}">
+                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername"
+                      [(ngModel)]="userFilter.jobname" [ngModelOptions]="{standalone: true}">
                     <div class="input-group-prepend">
                       <div class="input-group-text btn search_btn_fm">Search</div>
                     </div>
@@ -97,14 +99,16 @@
             <h4 class="font-weight-bold mb-0 mt-3">Recent Posts</h4>
             <div class="">
               <ul class="list-group list-group-flush" *ngFor="let crr of dataserv.reccareer|filterBy: userFilter;">
-                <li class="list-group-item px-0" (click)="getCategoryById(crr)"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>{{crr.jobname}}
+                <li class="list-group-item px-0" (click)="getCategoryById(crr)"><i class="fa fa-angle-right mr-2"
+                    aria-hidden="true"></i>{{crr.jobname}}
                   Starters</li>
               </ul>
             </div>
             <h4 class="font-weight-bold mb-0 mt-3">All Categories</h4>
             <div class="">
               <ul class="list-group list-group-flush" *ngFor="let car of dataserv.dept">
-                <li class="list-group-item px-0"  (click)="getCareerByCategory(car)"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>{{car.department}}</li>
+                <li class="list-group-item px-0" (click)="getCareerByCategory(car)"><i class="fa fa-angle-right mr-2"
+                    aria-hidden="true"></i>{{car.department}}</li>
               </ul>
             </div>
           </div>
@@ -128,25 +132,25 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="careerForm" >
+        <form [formGroup]="careerForm">
           <div class="row">
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
-              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name" formControlName="name"
-                aria-describedby="nameHelp">
+              <input type="Name" class="form-control rounded-0 contact_fm_control" placeholder="Name"
+                formControlName="name" aria-describedby="nameHelp">
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
-              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email" formControlName="email"
-                aria-describedby="emailHelp">
+              <input type="Email" class="form-control rounded-0 contact_fm_control" placeholder="Email"
+                formControlName="email" aria-describedby="emailHelp">
             </div>
             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12 contact_frm_col">
               <div class="input-group">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input form-control rounded-0 contact_fm_control" formControlName="file"
-                    id="inputGroupFile01" (change)="uploadFile($event)" #fileInput
+                  <input type="file" class="custom-file-input form-control rounded-0 contact_fm_control"
+                    formControlName="file" id="inputGroupFile01" (change)="uploadFile($event)" #fileInput
                     (change)="onFileSelect(fileInput)">
-                    <!-- id="inputGroupFile01" (change)="uploadFile($event)"> -->
+                  <!-- id="inputGroupFile01" (change)="uploadFile($event)"> -->
                   <label class="custom-file-label form-control rounded-0 contact_fm_control"
-                    for="inputGroupFile01" >Upload Resume</label>
+                    for="inputGroupFile01">Upload Resume</label>
                 </div>
               </div>
             </div>

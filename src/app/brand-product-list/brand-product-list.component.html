@@ -52,8 +52,8 @@
       </div>
 
       <div class="col-lg-3 col-md-6 col-sm-6 col-12 product_brand_col my-3 my-md-3"
-        *ngFor="let brand of dataserv.productListById| paginate: { itemsPerPage: 12, currentPage: page }; let ndx=index">
-        <a (click)="getProductDetail(brand)">
+        *ngFor="let brand of products$ | async | paginate: { itemsPerPage: 12, currentPage: page }; let ndx=index">
+        <a [routerLink]="['/brandProductDetail/' + brand.id]">
           <div class="card list_bd_prd hvr-float">
             <img class="card-img-top" src="{{brand.title_img}}" alt="Card image cap">
             <div class="card-body list_bd_body">

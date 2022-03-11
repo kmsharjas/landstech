@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { DataService } from '../data.service';
 
@@ -14,10 +17,14 @@ export class CareerDetailComponent implements OnInit {
   public careerForm: FormGroup;
   fileInfo: string;
   file: any;
+  id: number;
+
+  career$: Observable<any>;
   constructor(
     public dataserv: DataService,
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: ActivatedRoute
   ) {
     this.careerForm = this.fb.group({
       name: [null],
@@ -32,11 +39,18 @@ export class CareerDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataserv.getDepartments();
+    this.dataserv.getCareers();
+
+    this.career$ = this.router.paramMap.pipe(
+      switchMap((params) => {
+        this.id = +params.get('id');
+        return this.dataserv.getCareerById(this.id);
+      })
+    );
   }
 
   getCategoryById(vl) {
-    console.log(vl);
-    this.dataserv.getCareerById(vl);
+    this.career$ = of(vl);
   }
 
   getCareerByCategory(vl) {

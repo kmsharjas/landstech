@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -99,19 +100,38 @@ export class DataService {
     this.router.navigate(['brandProductList']);
   }
 
-  getProductDetailById(id) {
-    // console.log(id);
-    this.http
-      .get(this.envApiRoot + '/listproductdetail/' + id + '/')
-      .subscribe((res) => {
-        this.brandDetailbyID = res[0];
-        this.imageArray = this.brandDetailbyID;
-        // console.log(this.imageArray);
-        if (this.brandDetailbyID != null) {
-          this.router.navigate(['brandProductDetail']);
-        } else alert('No Products');
-      });
+  getProductDetails(id) {
+    return this.http.get<any[]>(
+      this.envApiRoot + '/listproductbybrand/' + id + '/'
+    );
   }
+
+  getProductDetailById(id) {
+    console.log(id);
+    return this.http.get<any[]>(
+      this.envApiRoot + '/listproductdetail/' + id + '/'
+    );
+    // .subscribe((res) => {
+    //   console.log(res);
+    //   this.brandDetailbyID = res[0];
+    //   this.imageArray = this.brandDetailbyID;
+    //   console.log(this.imageArray);
+    // });
+  }
+
+  // getProductDetailById(id) {
+  //   console.log(id);
+  //   return this.http
+  //     .get(this.envApiRoot + '/listproductdetail/' + id + '/')
+  //     .subscribe((res) => {
+  //       this.brandDetailbyID = res[0];
+  //       this.imageArray = this.brandDetailbyID;
+  //       // console.log(this.imageArray);
+  //       // if (this.brandDetailbyID != null) {
+  //       //   this.router.navigate(['brandProductDetail']);
+  //       // } else alert('No Products');
+  //     });
+  // }
 
   getTdiProducts() {
     this.http.get(this.envApiRoot + '/listtdiproducts/').subscribe((res) => {
@@ -120,12 +140,12 @@ export class DataService {
       // console.log(this.tdiProducts);
       let val = this.tdiProducts[0];
       // console.log(val);
-      this.tdiDetails(val);
+      // this.tdiDetails(val);
     });
   }
 
   tdiDetails(val) {
-    // console.log(val);
+    console.log(val);
     this.tdidesc = val.desc;
     this.tdiTitle = val.title;
     this.tdiSpec = val.specifications;
@@ -133,21 +153,29 @@ export class DataService {
   }
 
   getTdiListById(id) {
-    // console.log(id);
-    this.http
-      .get(this.envApiRoot + '/listtdiproductsbyid/' + id + '/')
-      .subscribe((res) => {
-        // this.spec = res[0].specifications
-        this.tdiDetail = res[0].tdiproduct;
-        // console.log(this.tdiDetail);
-
-        // console.log(this.tdiSpec);
-        let v = this.tdiSpec.split('|');
-        // console.log(v);
-        this.spec = v;
-        // console.log(this.spec);
-      });
+    console.log(id);
+    return this.http
+      .get<any[]>(this.envApiRoot + '/listtdiproductsbyid/' + id + '/')
+      .pipe(map((arr) => arr[0]));
   }
+
+  // getTdiListById(id) {
+  //   console.log(id);
+  //   this.http
+  //     .get(this.envApiRoot + '/listtdiproductsbyid/' + id + '/')
+  //     .subscribe((res) => {
+  //       // this.spec = res[0].specifications
+  //       this.tdiDetail = res[0].tdiproduct;
+  //       console.log(this.tdiDetail);
+
+  //       // console.log(this.tdiSpec);
+  //       let v = this.tdiSpec.split('|');
+  //       // console.log(v);
+  //       this.spec = v;
+  //       // console.log(this.spec);
+  //       this.router.navigate(['../tdiDetail']);
+  //     });
+  // }
 
   //get blog List
   getBlogs() {
@@ -160,16 +188,24 @@ export class DataService {
     });
   }
 
-  //get blog by ID
-  getBlogById(blg) {
-    this.http
-      .get(this.envApiRoot + '/listblogbyid/' + blg.id + '/')
-      .subscribe((res) => {
-        console.log(res);
-        this.blog = res[0];
-        this.router.navigate(['../blogDetail']);
-      });
+  getBlogById(id) {
+    console.log(id);
+
+    return this.http
+      .get<any[]>(this.envApiRoot + '/listblogbyid/' + id + '/')
+      .pipe(map((arr) => arr[0]));
   }
+
+  //get blog by ID
+  // getBlogById(blg) {
+  //   this.http
+  //     .get(this.envApiRoot + '/listblogbyid/' + blg.id + '/')
+  //     .subscribe((res) => {
+  //       console.log(res);
+  //       this.blog = res[0];
+  //       this.router.navigate(['../blogDetail']);
+  //     });
+  // }
 
   //get blog by ID
   getBlogByCategory(blg) {
@@ -189,15 +225,19 @@ export class DataService {
     });
   }
 
+  // getCareerById(id) {
+  //   console.log(id);
+
+  //   return this.http.get<any[]>(
+  //     this.envApiRoot + '/listcareersbyid/' + id + '/'
+  //   );
+  // }
+
   //get career by ID
-  getCareerById(val) {
-    this.http
-      .get(this.envApiRoot + '/listcareersbyid/' + val.id + '/')
-      .subscribe((res) => {
-        console.log(res);
-        this.career = res[0];
-        this.router.navigate(['../careerDetail']);
-      });
+  getCareerById(id) {
+    return this.http
+      .get<any[]>(this.envApiRoot + '/listcareersbyid/' + id + '/')
+      .pipe(map((arr) => arr[0]));
   }
 
   //get blog by ID

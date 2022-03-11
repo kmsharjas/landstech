@@ -4,17 +4,20 @@ import { DataService } from '../data.service';
 @Component({
   selector: 'app-tdi-list',
   templateUrl: './tdi-list.component.html',
-  styleUrls: ['./tdi-list.component.css']
+  styleUrls: ['./tdi-list.component.css'],
 })
 export class TdiListComponent implements OnInit {
-productDetail
-  constructor(public dataserv: DataService) { }
+  productDetail;
+  constructor(public dataserv: DataService) {}
 
   ngOnInit(): void {
-    this.dataserv.getTdiProducts()
-     this.productDetail = this.dataserv.tdiProducts
+    this.dataserv.getTdiProducts();
+    this.productDetail = this.dataserv.tdiProducts;
     console.log(this.productDetail);
-
   }
 
+  getTdiDetails(val) {
+    console.log(val);
+    this.dataserv.tdiDetails(val);
+  }
 }

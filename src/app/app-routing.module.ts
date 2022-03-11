@@ -19,27 +19,32 @@ import { TdiDetailComponent } from './tdi-detail/tdi-detail.component';
 import { TdiListComponent } from './tdi-list/tdi-list.component';
 
 const routes: Routes = [
-  {path: '',component:HomeComponent},
-  {path: 'about',component:AboutComponent},
-  {path: 'contact',component:ContactComponent},
-  {path: 'services',component:ServicesComponent},
-  {path: 'careers',component:CareersComponent},
-  {path: 'blog',component:BlogComponent},
-  {path: 'blogDetail',component:BlogDetailComponent},
-  {path: 'productByBrand',component:ProductByBrandComponent},
-  {path: 'productByCategory',component:ProductByCategoryComponent},
-  {path: 'brandProductList',component:BrandProductListComponent},
-  {path: 'brandProductDetail',component:BrandProductDetailComponent},
-  {path: 'tdiList',component:TdiListComponent},
-  {path: 'tdiDetail',component:TdiDetailComponent},
-  {path: 'careerDetail',component:CareerDetailComponent},
-  {path: 'careerByCategory',component:CareerBycategoryComponent},
-  {path: 'serviceDetail',component:ServiceDetailComponent},
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'services', component: ServicesComponent },
+  { path: 'careers', component: CareersComponent },
+  { path: 'careers/:id', component: CareerDetailComponent },
 
+  { path: 'blog', component: BlogComponent },
+  { path: 'blog/:id', component: BlogDetailComponent },
+  // { path: 'blogDetail', component: BlogDetailComponent },
+  // { path: 'blogDetail/:id', component: BlogDetailComponent },
+  // { path: 'productByBrand', component: ProductByBrandComponent },
+  { path: 'productByBrand/:id', component: BrandProductListComponent },
+  { path: 'productByCategory', component: ProductByCategoryComponent },
+  // {path: 'brandProductList',component:BrandProductListComponent},
+  { path: 'brandProductDetail/:id', component: BrandProductDetailComponent },
+  { path: 'tdiList', component: TdiListComponent },
+  { path: 'tdiList/:id', component: TdiDetailComponent },
+  // { path: 'tdiDetail', component: TdiDetailComponent },
+  // { path: 'careerDetail', component: CareerDetailComponent },
+  { path: 'careerByCategory', component: CareerBycategoryComponent },
+  { path: 'serviceDetail', component: ServiceDetailComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

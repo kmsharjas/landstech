@@ -26,10 +26,12 @@
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-12 col-12 blog_col my-2 my-md-3" data-aos="fade-up"
         data-aos-anchor-placement="top-bottom" *ngFor="let p of dataserv.tdiProducts">
-        <a routerLink="../tdiDetail">
+        <!-- <a routerLink="../tdiDetail" > -->
+        <a [routerLink]="p.id">
           <div class="blog_card card rounded-0 border-0">
             <!-- <img style="height:330px ;width: 284;" class="card-img-top" src="{{p.image}}" alt="blog image"> -->
-            <img style="height:330px ;width: 284;" class="card-img-top" src="{{ (p.image)? p.image:(dataserv.noImage) }}" alt="blog image">
+            <img style="height:330px ;width: 284;" class="card-img-top"
+              src="{{ (p.image)? p.image:(dataserv.noImage) }}" alt="blog image">
             <div class="card-body">
               <h5 class="card-title blue_clr font-weight-bold">{{p.title}}</h5>
               <p>{{ (p.desc.length>168)? (p.desc | slice:0:168)+'..':(p.desc) }}...</p>

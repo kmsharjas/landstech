@@ -1,89 +1,88 @@
 <!-- --------------inner banner start-------------- -->
 <section class="inner_banner_bg"
-    style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-tdi2.jpg);">
-    <div class="container inner_bnr_bg">
-        <div class="row align-items-end">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
-                <h1 class="text-white font-weight-bold">TDI TurboTwin Air Starter Products</h1>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-transparent justify-content-end bread_crumb_custom mb-0">
-                        <li class="breadcrumb-item"><a routerLink="" class="blue_clr">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">TDI TurboTwin Air Starter Products</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+  style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-tdi2.jpg);">
+  <div class="container inner_bnr_bg">
+    <div class="row align-items-end">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <h1 class="text-white font-weight-bold">TDI TurboTwin Air Starter Products</h1>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent justify-content-end bread_crumb_custom mb-0">
+            <li class="breadcrumb-item"><a routerLink="" class="blue_clr">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">TDI TurboTwin Air Starter Products</li>
+          </ol>
+        </nav>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- --------------inner banner end-------------- -->
 <!--------------------------- tdi detail start --------------------------->
-<section class="section_pad">
-    <div class="Quote_bg">
-        <div class="Quote_btn d-flex" data-toggle="modal" data-target="#quote-modal"><i class="fa fa-file-text fa-2x"
-                aria-hidden="true"></i>
-            <p class="mb-0 pl-2 font-weight-bold text-white">Request Quote</p>
-        </div>
+<section class="section_pad" *ngIf="tdiProduct$ | async as tdi">
+  <div class="Quote_bg">
+    <div class="Quote_btn d-flex" data-toggle="modal" data-target="#quote-modal"><i class="fa fa-file-text fa-2x"
+        aria-hidden="true"></i>
+      <p class="mb-0 pl-2 font-weight-bold text-white">Request Quote</p>
     </div>
-    <div class="container">
-        <div class="row my-3 my-md-2">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2" data-aos="fade-up"
-                data-aos-anchor-placement="top-bottom">
-                <div class="card category_card">
-                    <div class="card-body">
-                        <form>
-                            <div class="form-row align-items-center search_blog_bg">
-                                <div class="col-sm-12 my-1">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control rounded-0 serch_control"
-                                            id="inlineFormInputGroupUsername">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text btn search_btn_fm">Search</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <h4 class="font-weight-bold font-weight-sm-lighter my-3 my-md-3 mobile_btn_category"
-                            onclick="myFunction()">TDI Products</h4>
-                        <div class="list-group category_group" id="category-mobile">
-                            <a class="list-group-item list-group-item-action border-left-0 border-right-0"
-                                *ngFor="let p of dataserv.tdiProducts" (click)="dataserv.tdiDetails(p)">
-                                <i class="fa fa-angle-right mr-2"
-                                    aria-hidden="true"></i> {{p.pdt_name}}</a>
-                        </div>
+  </div>
+  <div class="container">
+    <div class="row my-3 my-md-2">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-12 my-2" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <div class="card category_card">
+          <div class="card-body">
+            <form>
+              <div class="form-row align-items-center search_blog_bg">
+                <div class="col-sm-12 my-1">
+                  <div class="input-group">
+                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername"
+                      [(ngModel)]="userFilter.pdt_name" [ngModelOptions]="{standalone: true}">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text btn search_btn_fm">Search</div>
                     </div>
+                  </div>
                 </div>
+              </div>
+            </form>
+            <h4 class="font-weight-bold font-weight-sm-lighter my-3 my-md-3 mobile_btn_category" onclick="myFunction()">
+              TDI Products</h4>
+            <div class="list-group category_group" id="category-mobile">
+              <a class="list-group-item list-group-item-action border-left-0 border-right-0"
+                *ngFor="let p of dataserv.tdiProducts|filterBy: userFilter;" (click)="changeProducta(p)">
+                <i class="fa fa-angle-right mr-2" aria-hidden="true"></i> {{p.pdt_name}}</a>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-6 col-12 my-2" data-aos="fade-up"
-                data-aos-anchor-placement="top-bottom">
-                <h2 class="mt-3 font-weight-bold">{{dataserv.tdiTitle}}</h2>
-                <p>{{dataserv.tdidesc}}</p>
-                <p class="font-weight-bold">Specifications</p>
-                <ul class="pl-4">
-                    <li id="test" *ngFor="let li of dataserv.spec">{{li | json}}. </li>
-                </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-6 col-12 my-2" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+        <h2 class="mt-3 font-weight-bold">{{tdi.title}}</h2>
+        <p>{{tdi.desc}}</p>
+        <ng-container *ngIf="tdi.specifications !== ''">
+          <p class="font-weight-bold">Specifications</p>
+          <ul class="pl-4">
+            <li id="test" *ngFor="let li of tdi.specifications.split('|')">{{li}}. </li>
+          </ul>
+        </ng-container>
 
-                <div *ngFor="let tdi of dataserv.tdiDetail">
-                    <p class="font-weight-bold">{{tdi.sub_title}}</p>
-                    <p >{{tdi.subdesc}}. </p>
-                    <div class="row align-items-center justify-content-center" >
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-3 my-md-3" *ngIf="tdi.vedio_url!=null">
-                            <iframe width="100%" height="315" [src]="tdi.vedio_url|safe"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </div>
 
-                    </div>
-                    <div *ngIf="tdi.imag_url!=null">
-                        <img src="{{tdi.imag_url}}" class="img-fluid mb-2" alt="tdi product">
-                    </div>
-                </div>
+        <div *ngFor="let tdi of tdi.tdiproduct">
+          <p class="font-weight-bold">{{tdi.sub_title}}</p>
+          <p>{{tdi.subdesc}}. </p>
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 my-3 my-md-3" *ngIf="tdi.vedio_url!=null">
+              <iframe width="100%" height="315" [src]="tdi.vedio_url|safe" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
 
-                <!-- <div class="row">
+          </div>
+          <div *ngIf="tdi.imag_url!=null">
+            <img src="{{tdi.imag_url}}" class="img-fluid mb-2" alt="tdi product">
+          </div>
+        </div>
+
+        <!-- <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12 pagination_cal my-3 my-md-3">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center justify-content-md-end">
@@ -106,8 +105,8 @@
                         </nav>
                     </div>
                 </div> -->
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </section>
 <!--------------------------- tdi detail end --------------------------->

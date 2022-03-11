@@ -1,79 +1,83 @@
-  <!-- --------------inner banner start-------------- -->
-  <section class="inner_banner_bg" style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-banner5.jpg);">
-    <div class="container inner_bnr_bg">
-      <div class="row align-items-end">
-        <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
-          <h1 class="text-white font-weight-bold">Blog Details</h1>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-transparent justify-content-end bread_crumb_custom mb-0">
-              <li class="breadcrumb-item"><a routerLink="" class="blue_clr">Home</a></li>
-              <li class="breadcrumb-item"><a routerLink="../blog" class="blue_clr">Blog</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
-            </ol>
-          </nav>
-        </div>
+<!-- --------------inner banner start-------------- -->
+<section class="inner_banner_bg"
+  style="background: linear-gradient( #00000082, rgb(0 0 0 / 45%) ), url(../../assets/img/inner-banner5.jpg);">
+  <div class="container inner_bnr_bg">
+    <div class="row align-items-end">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <h1 class="text-white font-weight-bold">Blog Details</h1>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-4 my-md-3 inner_bnr_col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent justify-content-end bread_crumb_custom mb-0">
+            <li class="breadcrumb-item"><a routerLink="" class="blue_clr">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="../blog" class="blue_clr">Blog</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+          </ol>
+        </nav>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- --------------inner banner end-------------- -->
-  <!--------------------------- blog detail start --------------------------->
-  <section class="blg_detail_bg">
-    <div class="container">
-      <div class="row">
+<!-- --------------inner banner end-------------- -->
+<!--------------------------- blog detail start --------------------------->
+<section class="blg_detail_bg">
+  <div class="container">
+    <div class="row">
 
-        <div class="col-lg-4 col-md-4 col-sm-12 col-12 blog_col_right order-md-2 order-sm-1 order-1">
-          <div class="blog_recent_card card">
-            <div class="card-body">
-              <form>
-                <div class="form-row align-items-center search_blog_bg">
-                  <div class="col-sm-12 my-1">
-                    <div class="input-group">
-                      <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername" [(ngModel)]="userFilter.title"  [ngModelOptions]="{standalone: true}">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text btn search_btn_fm">Search</div>
-                      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-12 blog_col_right order-md-2 order-sm-1 order-1">
+        <div class="blog_recent_card card">
+          <div class="card-body">
+            <form>
+              <div class="form-row align-items-center search_blog_bg">
+                <div class="col-sm-12 my-1">
+                  <div class="input-group">
+                    <input type="text" class="form-control rounded-0 serch_control" id="inlineFormInputGroupUsername"
+                      [(ngModel)]="userFilter.title" [ngModelOptions]="{standalone: true}">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text btn search_btn_fm">Search</div>
                     </div>
                   </div>
                 </div>
-              </form>
-              <h4 class="font-weight-bold mb-0 mt-3">Recent Posts</h4>
-              <div class="">
-                <ul class="list-group list-group-flush" *ngFor="let blg of dataserv.recblog|filterBy: userFilter;">
-                 <li class="list-group-item px-0" (click)="getBlogById(blg)"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>{{blg.title}}</li>
-                </ul>
               </div>
+            </form>
+            <h4 class="font-weight-bold mb-0 mt-3">Recent Posts</h4>
+            <div class="">
+              <ul class="list-group list-group-flush" *ngFor="let blg of dataserv.recblog|filterBy: userFilter;">
+                <li class="list-group-item px-0" (click)="getBlogById(blg)"><i class="fa fa-angle-right mr-2"
+                    aria-hidden="true"></i>{{blg.title}}</li>
+              </ul>
+            </div>
 
-              <!-- <h4 class="font-weight-bold mb-0 mt-3">All Categories</h4>
+            <!-- <h4 class="font-weight-bold mb-0 mt-3">All Categories</h4>
               <div class="">
                 <ul class="list-group list-group-flush" *ngFor="let blg of dataserv.blogcat">
                   <li class="list-group-item px-0" (click)="getBlogByCategory(blg)"><i class="fa fa-angle-right mr-2" aria-hidden="true"></i>{{blg.name}}</li>
                 </ul>
               </div> -->
 
-            </div>
           </div>
         </div>
+      </div>
 
-        <div class="col-lg-8 col-md-8 col-sm-12 col-12 blog_col_left order-md-1 order-sm-12 order-2">
-          <div class="blog_left_card" data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom" data-aos-delay="300">
-            <h2 class="mt-3 font-weight-bold">{{dataserv.blog.title}}</h2>
-            <p class="text-secondary font-weight-bold mb-0"><i class="fa fa-calendar" aria-hidden="true"></i> {{dataserv.blog.date|date:'mediumDate'}}</p>
-           <!-- {{dataserv.blog.blog|json}} -->
-            <div *ngFor="let sub of dataserv.blog.blog">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-12 blog_col_left order-md-1 order-sm-12 order-2"
+        *ngIf="blog$ | async as blog">
+        <div class="blog_left_card" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="300">
+          <h2 class="mt-3 font-weight-bold">{{blog.title}}</h2>
+          <p class="text-secondary font-weight-bold mb-0"><i class="fa fa-calendar" aria-hidden="true"></i>
+            {{blog.date|date:'mediumDate'}}</p>
+          <!-- {{dataserv.blog.blog|json}} -->
+          <div *ngFor="let sub of blog.blog">
             <img src="{{sub.img}}" class="img-fluid my-3" alt="blog image" width="100%">
             <p>{{sub.desc}}</p>
-           </div>
-            <!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p> -->
-            <!-- <img src="../../assets/img/blog-detail2.jpg" class="img-fluid my-3" alt="blog image" width="100%">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p> -->
           </div>
+          <!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p> -->
+          <!-- <img src="../../assets/img/blog-detail2.jpg" class="img-fluid my-3" alt="blog image" width="100%">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p> -->
         </div>
-
       </div>
+
     </div>
-  </section>
-  <!--------------------------- blog detail end --------------------------->
+  </div>
+</section>
+<!--------------------------- blog detail end --------------------------->
